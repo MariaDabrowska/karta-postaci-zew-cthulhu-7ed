@@ -27,11 +27,11 @@ class ZestawCechPostaci(models.Model):
 
 class Umiejetnosc(models.Model):
     aktorstwo = models.PositiveSmallIntegerField(default=5)
-    antropologia  = models.PositiveSmallIntegerField(default=1)
+    antropologia = models.PositiveSmallIntegerField(default=1)
     archeologia = models.PositiveSmallIntegerField(default=1)
     astronomia = models.PositiveSmallIntegerField(default=1)
     bicz = models.PositiveSmallIntegerField(default=5)
-    bijatyka = models.PositiveSmallIntegerField(default= 25)
+    bijatyka = models.PositiveSmallIntegerField(default=25)
     biologia = models.PositiveSmallIntegerField(default=1)
     botanika = models.PositiveSmallIntegerField(default=1)
     bron_artyleryjska = models.PositiveSmallIntegerField(default=1)
@@ -55,7 +55,7 @@ class Umiejetnosc(models.Model):
     inzynieria = models.PositiveSmallIntegerField(default=1)
     jezdziectwo = models.PositiveSmallIntegerField(default=5)
     jezyk_obcy = models.PositiveSmallIntegerField(default=1)
-    jezyk_ojczysty = models.PositiveSmallIntegerField(default=0) #!!!!!!!!!!
+    jezyk_ojczysty = models.PositiveSmallIntegerField(default=0)                    # !!!!!!!!!!
     karabin = models.PositiveSmallIntegerField(default=25)
     karabin_maszynowy = models.PositiveSmallIntegerField(default=10)
     korzystanie_z_bibliotek = models.PositiveSmallIntegerField(default=20)
@@ -101,7 +101,7 @@ class Umiejetnosc(models.Model):
     tresura_zwierzat = models.PositiveSmallIntegerField(default=5)
     tropienie = models.PositiveSmallIntegerField(default=10)
     ukrywanie = models.PositiveSmallIntegerField(default=20)
-    unik = models.PositiveSmallIntegerField(default=0) # !!!!!!!!!!!!!!
+    unik = models.PositiveSmallIntegerField(default=0)                              # !!!!!!!!!!!!!!
     urok_osobisty = models.PositiveSmallIntegerField(default=15)
     wiedza_o_naturze = models.PositiveSmallIntegerField(default=10)
     wiedza_tajemna = models.PositiveSmallIntegerField(default=1)
@@ -114,7 +114,14 @@ class Umiejetnosc(models.Model):
 
 
 class Profesja(models.Model):
-    pass
+
+    nazwa = models.CharField(max_length=50, primary_key=True)
+    majetnosc_min = models.PositiveSmallIntegerField()
+    majetnosc_max = models.PositiveSmallIntegerField()
+    um_stale = models.CharField(max_length=200)
+    wybor1 = models.CharField(max_length=200, null=True)
+    wybor2 = models.CharField(max_length=200, null=True)
+    wybor3 = models.CharField(max_length=200, null=True)
 
 
 class Postac(models.Model):
