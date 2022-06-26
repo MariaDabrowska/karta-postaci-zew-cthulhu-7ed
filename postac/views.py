@@ -8,7 +8,7 @@ class WidokStworzPostac(generic.CreateView):
     model = Postac
     template_name = ...
     fields = '__all__'
-    # success_url = url tworzenia cech
+    success_url = #url tworzenia cech
 
 class WidokStworzCechy(generic.CreateView):
     model = ZestawCechPostaci
