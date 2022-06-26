@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <p>ACTOR ID: {{ actor.id }}</p>
+    <p>ACTOR NAME: {{ actor.name }} {{ actor.last_name }}</p>
+    <p>
+    <a href="{% url 'kostka:kostka-uaktualnij-widok' pk=actor.pk %}"><input type="submit" value="UAKTUALNIJ"></a>
+    <a href="{% url 'kostka:kostka-usun-widok' pk=actor.pk %}"><input type="submit" value="USUŃ"></a>
+    </p>
+    <a href="{% url 'kostka:index' %}">RETURN TO INDEX PAGE</a>
+{% endblock %}

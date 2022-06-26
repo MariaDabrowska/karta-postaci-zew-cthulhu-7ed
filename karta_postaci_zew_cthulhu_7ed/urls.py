@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from karta_postaci_zew_cthulhu_7ed import views
 
 app_name = 'karta-postaci'
 urlpatterns = [
@@ -24,4 +25,6 @@ urlpatterns = [
     path('postac/', include('postac.urls')),
     path('uzytkownik/', include('uzytkownik.urls')),
     path('uzytkownik/', include('django.contrib.auth.urls')),
+
+    path('homepage/', views.HomePageView.as_view(), name='homepage'),
 ]
