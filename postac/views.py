@@ -1,14 +1,53 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 # Create your views here.
 from postac.models import ZestawCechPostaci, Postac
 from kostka.models import Kostka
 
+
+class WidokIndex(generic.TemplateView):
+    template_name = 'postac/index.html'
+
+
+class WidokPostac(generic.View):
+    def get(self, request):
+        return render(
+            request,
+            template_name='postac/postacie.html',
+            context={'postacie': Postac.objects.all()}
+        )
+
+
+class WidokPostacLista(generic.ListView):
+    template_name = 'postac/list_view.html'
+    model = Postac
+
+
 class WidokStworzPostac(generic.CreateView):
     model = Postac
-    template_name = ...
+    template_name = 'form.html'
     fields = '__all__'
-    success_url = #url tworzenia cech
+    success_url = reverse_lazy('postac:postac-widok')
+
+
+class WidokPostacSzczegoly(generic.DetailView):
+    model = Postac
+    template_name = 'postac/postac.html'
+
+
+class WidokPostacUaktualnij(generic.UpdateView):
+    model = Postac
+    fields = '__all__'
+    template_name = 'form.html'
+    success_url = reverse_lazy('postac:postac-widok')
+
+
+class WidokPostacUsun(generic.DeleteView):
+    model = Postac
+    template_name = 'delete.html'
+    success_url = reverse_lazy('postac:postac-widok')
+
 
 class WidokStworzCechy(generic.CreateView):
     model = ZestawCechPostaci
