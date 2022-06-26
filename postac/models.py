@@ -15,7 +15,7 @@ class ZestawCechPostaci(models.Model):
     budowa_ciala = models.PositiveSmallIntegerField()
     zrecznosc = models.PositiveSmallIntegerField()
     wyglad = models.PositiveSmallIntegerField()
-    integligencja = models.PositiveSmallIntegerField()
+    inteligencja = models.PositiveSmallIntegerField()
     moc = models.PositiveSmallIntegerField()
     wyksztalcenie = models.PositiveSmallIntegerField()
     szczescie = models.PositiveSmallIntegerField()
@@ -125,4 +125,20 @@ class Profesja(models.Model):
 
 
 class Postac(models.Model):
-    pass
+    nazwa = models.CharField(max_length=218, blank=False)
+    uzytkownik = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='postac', blank=True, null=True
+    )
+    wiek = models.SmallIntegerField()
+    cechy = models.ForeignKey(
+        ZestawCechPostaci, on_delete=models.CASCADE, related_name='postac', blank=True, null=True
+    )
+    um = models.ForeignKey(
+        Umiejetnosc, on_delete=models.CASCADE, related_name='postac', blank=True, null=True
+    )
+    profesja = models.ForeignKey(
+        Profesja, on_delete=models.CASCADE, related_name='postac', blank=True, null=True
+    )
+    ekwipunek = models.CharField(max_length=1024, blank=True, null=True)
+    historia = models.CharField(max_length=1024, blank=True, null=True)
+    uzbrojenie = models.CharField(max_length=1024, blank=True, null=True)
