@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    <p>Kość D {{ kostka.ilosc_scian }}</p>
+    <p>
+    <a href="{% url 'kostka:kostka-uaktualnij' pk=kostka.pk %}"><input type="submit" value="UAKTUALNIJ"></a>
+    <a href="{% url 'kostka:kostka-usun' pk=kostka.pk %}"><input type="submit" value="USUŃ"></a>
+    </p>
+    <a href="{% url 'kostka:kostka-widok' %}">Powrót</a>
+{% endblock %}
