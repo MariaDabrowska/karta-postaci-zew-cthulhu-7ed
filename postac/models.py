@@ -1,12 +1,13 @@
 from abc import ABC, abstractmethod
 
+from django.contrib.auth.models import User
 from django.db import models
 
 
-class Przelicznik(models.Model, ABC):
-    @abstractmethod
-    def pokaz_wartosci(self, value):
-        return value, value // 2, value // 5
+# class Przelicznik(models.Model, ABC):
+#     @abstractmethod
+#     def pokaz_wartosci(self, value):
+#         return value, value // 2, value // 5
 
 
 class ZestawCechPostaci(models.Model):
