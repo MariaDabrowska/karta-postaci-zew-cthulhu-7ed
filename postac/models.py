@@ -115,7 +115,6 @@ class Umiejetnosc(models.Model):
 
 
 class Profesja(models.Model):
-
     nazwa = models.CharField(max_length=50, primary_key=True)
     majetnosc_min = models.PositiveSmallIntegerField()
     majetnosc_max = models.PositiveSmallIntegerField()
