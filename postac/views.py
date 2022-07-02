@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from postac.forms import FormPostac
 from postac.models import ZestawCechPostaci, Postac
 from kostka.models import Kostka
 
@@ -24,11 +25,16 @@ class WidokPostacLista(generic.ListView):
     model = Postac
 
 
-class WidokStworzPostac(generic.CreateView):
-    model = Postac
-    template_name = 'form.html'
-    fields = '__all__'
+class WidokStworzPostac(generic.FormView):
+    form_class = FormPostac
+    template_name = 'postac/create.html'
+    # template_name = 'form.html'
     success_url = reverse_lazy('postac:postac-widok')
+
+    def form_valid(self, form):
+        result = super().form_valid(form)
+        form.save()
+        return result
 
 
 class WidokPostacSzczegoly(generic.DetailView):
