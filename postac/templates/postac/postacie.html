@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for p in postacie %}
+        <p><a href="{% url 'kostka:kostka-szczegoly' pk=k.pk %}"> {{ k }}</a></p>
+    {% endfor %}
+    <a href="{% url 'postac:index' %}">Powrót</a>
+{% endblock %}

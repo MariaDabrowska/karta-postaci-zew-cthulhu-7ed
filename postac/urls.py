@@ -1,9 +1,18 @@
 from django.urls import path
-from postac.views import WidokStworzPostac, WidokStworzCechy, ZastosujWiek
+
+from postac import views
 
 app_name = 'postac'
 urlpatterns = [
-    path('stworz-postac/', WidokStworzPostac.as_view(), name='stworz_postac'),
-    path('generuj-cechy/', WidokStworzCechy.as_view(), name='generuj_cechy'),
-    path('zastosuj-wiek/', ZastosujWiek.as_view(), name='zastosuj_wiek'),
+    path('index/', views.WidokIndex.as_view(), name='index'),
+
+    path('postac-widok/', views.WidokPostac.as_view(), name='postac-widok'),
+    path('postacie/', views.WidokPostacLista.as_view(), name='postacie'),
+    path('postac-stworz/', views.WidokStworzPostac.as_view(), name='postac-stworz'),
+    path('postac-szczegoly/<pk>', views.WidokPostacSzczegoly.as_view(), name='postac-szczegoly'),
+    path('postac-uaktualnij/<pk>', views.WidokPostacUaktualnij.as_view(), name='postac-uaktualnij'),
+    path('postac-usun/<pk>', views.WidokPostacUsun.as_view(), name='postac-usun'),
+
+    path('generuj-cechy/', views.WidokStworzCechy.as_view(), name='generuj-cechy'),
+    path('zastosuj-wiek/', views.ZastosujWiek.as_view(), name='zastosuj_wiek'),
 ]

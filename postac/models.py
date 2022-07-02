@@ -1,12 +1,13 @@
 from abc import ABC, abstractmethod
 
+from django.contrib.auth.models import User
 from django.db import models
 
 
-class Przelicznik(models.Model, ABC):
-    @abstractmethod
-    def pokaz_wartosci(self, value):
-        return value, value // 2, value // 5
+# class Przelicznik(models.Model, ABC):
+#     @abstractmethod
+#     def pokaz_wartosci(self, value):
+#         return value, value // 2, value // 5
 
 
 class ZestawCechPostaci(models.Model):
@@ -15,7 +16,7 @@ class ZestawCechPostaci(models.Model):
     budowa_ciala = models.PositiveSmallIntegerField()
     zrecznosc = models.PositiveSmallIntegerField()
     wyglad = models.PositiveSmallIntegerField()
-    inteligencja = models.PositiveSmallIntegerField()
+    integligencja = models.PositiveSmallIntegerField()
     moc = models.PositiveSmallIntegerField()
     wyksztalcenie = models.PositiveSmallIntegerField()
     szczescie = models.PositiveSmallIntegerField()
@@ -114,7 +115,6 @@ class Umiejetnosc(models.Model):
 
 
 class Profesja(models.Model):
-
     nazwa = models.CharField(max_length=50, primary_key=True)
     majetnosc_min = models.PositiveSmallIntegerField()
     majetnosc_max = models.PositiveSmallIntegerField()
@@ -125,7 +125,7 @@ class Profesja(models.Model):
 
 
 class Postac(models.Model):
-    nazwa = models.CharField(max_length=218, blank=False)
+    nazwa = models.CharField(max_length=218, null=False)
     uzytkownik = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='postac', blank=True, null=True
     )

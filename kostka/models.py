@@ -13,3 +13,13 @@ class Kostka(models.Model):
 
     def rzuty_modyfikowane2(self):
         return (self.rzut() + self.rzut() + 6) * 5
+
+
+if __name__ == '__main__':
+    k6 = Kostka(6)
+    print(k6.rzuty_modyfikowane1)
+    print(k6.rzuty_modyfikowane1)
+    print(k6.rzuty_modyfikowane1)
+    print(k6.rzuty_modyfikowane1)
+    print(k6.rzuty_modyfikowane1)
+    print(k6.rzuty_modyfikowane1)
