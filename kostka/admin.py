@@ -1,3 +1,4 @@
 from django.contrib import admin
+from kostka.models import Kostka
 
-# Register your models here.
+admin.site.register(Kostka)
