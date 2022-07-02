@@ -14,3 +14,11 @@ class FormPostac(forms.ModelForm):
         model = Postac
         fields = '__all__'
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['nazwa'].label = 'Imię Badacza'
+        self.fields['nazwa'].widget.attrs.update({'placeholder': 'Jak Cię zwą?'})
+
+        self.fields.pop('uzytkownik')
+
+

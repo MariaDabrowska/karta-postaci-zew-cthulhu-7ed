@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-    <p>{{ postac }}</p>
+    <p>Badacz: {{ postac.nazwa }}</p>
+    <p>Gracz: {{ postac.uzytkownik }}</p>
+    <p>Wiek: {{ postac.wiek }}</p>
+    <p>Ekwipunek: {{ postac.ekwipunek }}</p>
+    <p>Historia: {{ postac.historia }}</p>
+    <p>Uzbrojenie: {{ postac.uzbrojenie }}</p>
     <p>
-    <a href="{% url 'postac:stworz-postac' pk=kostka.pk %}"><input type="submit" value="UAKTUALNIJ"></a>
-    <a href="{% url 'postac:postac-usun' pk=kostka.pk %}"><input type="submit" value="USUŃ"></a>
+    <a href="{% url 'postac:postac-uaktualnij' pk=postac.pk %}"><input type="submit" value="UAKTUALNIJ"></a>
+    <a href="{% url 'postac:postac-usun' pk=postac.pk %}"><input type="submit" value="USUŃ"></a>
     </p>
     <a href="{% url 'postac:postac-widok' %}">Powrót</a>
 {% endblock %}

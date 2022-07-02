@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
     {% for p in postacie %}
-        <p><a href="{% url 'postac:postac-widok' %}"> {{ k }}</a></p>
+        <p>
+            <a href="{% url 'postac:postac-szczegoly' pk=p.pk %}">{{ p.nazwa }}</a>
+        </p>
     {% endfor %}
     <a href="{% url 'postac:index' %}">Powrót</a>
 {% endblock %}

@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -21,15 +23,23 @@ class WidokPostac(generic.View):
 
 
 class WidokPostacLista(generic.ListView):
-    template_name = 'postac/list_view.html'
+    template_name = 'postac/list_view_postacie.html'
     model = Postac
 
 
 class WidokStworzPostac(generic.FormView):
     form_class = FormPostac
-    template_name = 'postac/create.html'
-    # template_name = 'form.html'
+    # template_name = 'postac/create.html'
+    template_name = 'form.html'
     success_url = reverse_lazy('postac:postac-widok')
+
+    @login_required
+    def dopisz_do_uzytkownika(self, request):
+        if request.method == 'POST':
+            form = FormPostac(request.POST)
+            if form.is_valid():
+                uzytkownik = self.request.user.username
+                Postac.objects.create(uzytkownik=uzytkownik)
 
     def form_valid(self, form):
         result = super().form_valid(form)
@@ -51,7 +61,7 @@ class WidokPostacUaktualnij(generic.UpdateView):
 
 class WidokPostacUsun(generic.DeleteView):
     model = Postac
-    template_name = 'delete.html'
+    template_name = 'postac/delete-postac.html'
     success_url = reverse_lazy('postac:postac-widok')
 
 

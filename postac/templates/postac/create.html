@@ -4,50 +4,59 @@
     <form method="post">
         {% csrf_token %}
         <p>
-            <label for="id_nazwa">Nazwa postaci:</label>
+            <label class="label" for="id_nazwa">Nazwa postaci:</label>
             <input type="text" name="nazwa" placeholder="Nazwa postaci" required id="id_nazwa">
         </p>
         <p>
-            <label for="id_uzytkownik">Użytkownik:</label>
+            <label class="label" for="id_uzytkownik">Użytkownik:</label>
             {{ user.username }}
 
         </p>
         <p>
-            <label for="id_wiek">Wiek:</label>
+            <label class="label" for="id_wiek">Wiek:</label>
             <button type="button" class="decrement" onclick="_addDelta('id_wiek', -1)">-</button>
-            <input name="wiek" , required id="id_wiek">
+            <input name="wiek" required id="id_wiek">
             <button type="button" class="increment" onclick="_addDelta('id_wiek', +1)">+</button>
         <p>
-            <label for="id_cechy">Zestaw cech:</label>
-            <input type="text" name="cechy" id="id_cechy">
+            <label class="label" for="id_cechy">Zestaw cech:</label>
             <button type="button">GENERUJ</button>
+            <ul>
+            cecha 1 ?
+            </ul>
+            <ul>
+                cecha 2 ?
+            </ul>
+            <ul>
+                cecha 3 ?
+            </ul>
         </p>
         <p>
-            <label for="id_prof">Profesja:</label>
+            <label class="label" for="id_prof">Profesja:</label>
             <select id="id_prof">
                 ...
             </select>
             <button type="button">MODYFIKUJ UMIEJĘTNOŚCI????</button>
         </p>
         <p>
-            <label for="id_um">Zestaw Umiejętności</label>
+            <label class="label" for="id_um">Zestaw Umiejętności</label>
             <select id="id_um">
                 ...
             </select>
         </p>
         <p>
-            <label for="id_eq">Ekwipunek</label>
+            <label class="label" for="id_eq">Ekwipunek</label>
             <textarea name="eq" placeholder="Lista ekwipunku" id="id_eq"></textarea>
         </p>
         <p>
-            <label for="id_hist">Historia</label>
+            <label class="label" for="id_hist">Historia</label>
             <textarea name="historia" placeholder="Opowiedz mi swoją historię" id="id_hist"></textarea>
         </p>
         <p>
-            <label for="id_uzbrojenie">Uzbrojenie</label>
+            <label class="label" for="id_uzbrojenie">Uzbrojenie</label>
             <textarea name="uzbrojenie" id="id_uzbrojenie" placeholder="Jakie posiadasz uzbrojenie?"></textarea>
         </p>
 
         <input type="submit" value="Stwórz">
     </form>
+    <a href="{% url 'postac:index' %}">Powrót</a>
 {% endblock %}
