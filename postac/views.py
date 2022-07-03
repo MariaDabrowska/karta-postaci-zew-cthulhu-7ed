@@ -118,10 +118,10 @@ class WidokStworzPostac(generic.FormView, LoginRequiredMixin):
         obj.save()
         return HttpResponseRedirect(self.get_success_url())
 
-    # def generuj_cechy(self):
-    #     if self.request.GET.get('generuj_cechy'):
-    #         WidokStworzCechy()
-    #     return render(self.request, 'postac/postac.html')
+    def generuj_cechy(self):
+        if self.request.GET.get('generuj_cechy'):
+            WidokStworzCechy(self.request.POST)
+        return render(self.request, 'postac/postac.html')
 
 
 class WidokPostacSzczegoly(generic.DetailView):
