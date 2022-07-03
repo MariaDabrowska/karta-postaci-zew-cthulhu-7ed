@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    {{ form.media }}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <input type="button" value="Generuj Cechy">
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+{% endblock %}

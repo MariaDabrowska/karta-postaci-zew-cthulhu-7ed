@@ -12,13 +12,13 @@ class FormPostac(forms.ModelForm):
 
     class Meta:
         model = Postac
-        fields = '__all__'
+        exclude = ['uzytkownik']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['nazwa'].label = 'Imię Badacza'
         self.fields['nazwa'].widget.attrs.update({'placeholder': 'Jak Cię zwą?'})
+        self.fields['wiek'].widget.attrs.update({'placeholder': 'Ile masz lat?'})
 
-        self.fields.pop('uzytkownik')
 
 

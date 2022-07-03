@@ -1,4 +1,4 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -27,24 +27,20 @@ class WidokPostacLista(generic.ListView):
     model = Postac
 
 
-class WidokStworzPostac(generic.FormView):
+class WidokStworzPostac(generic.FormView, LoginRequiredMixin):
     form_class = FormPostac
     # template_name = 'postac/create.html'
-    template_name = 'form.html'
+    template_name = 'postac/form.html'
     success_url = reverse_lazy('postac:postac-widok')
+    extra_context = {
 
-    @login_required
-    def dopisz_do_uzytkownika(self, request):
-        if request.method == 'POST':
-            form = FormPostac(request.POST)
-            if form.is_valid():
-                uzytkownik = self.request.user.username
-                Postac.objects.create(uzytkownik=uzytkownik)
+    }
 
     def form_valid(self, form):
-        result = super().form_valid(form)
-        form.save()
-        return result
+        obj = form.save(commit=False)
+        obj.uzytkownik = self.request.user
+        obj.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class WidokPostacSzczegoly(generic.DetailView):
