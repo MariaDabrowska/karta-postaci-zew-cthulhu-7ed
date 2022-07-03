@@ -14,5 +14,5 @@ urlpatterns = [
     path('postac-usun/<pk>', views.WidokPostacUsun.as_view(), name='postac-usun'),
 
     path('generuj-cechy/', views.WidokStworzCechy.as_view(), name='generuj-cechy'),
-
+    path('zastosuj-wiek/', views.ZastosujWiek.as_view(), name='zastosuj_wiek'),
 ]
