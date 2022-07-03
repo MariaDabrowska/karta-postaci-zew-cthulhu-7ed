@@ -127,7 +127,7 @@ class ZastosujWiek(generic.FormView):  #na tę chwilę to schemat, żeby mieć z
 
     def test_rozwoju(self, value):
         k100 = Kostka.objects.get(100)
-        k10 = Kostka.object.get(10)
+        k10 = Kostka.objects.get(10)
         if k100.rzut() > value:
             return k10.rzut()
         return 0

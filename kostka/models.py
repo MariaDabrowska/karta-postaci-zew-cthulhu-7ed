@@ -5,6 +5,9 @@ from random import randint
 class Kostka(models.Model):
     ilosc_scian = models.PositiveSmallIntegerField(primary_key=True)
 
+    class Meta:
+        verbose_name_plural = 'Kostki'
+
     def rzut(self):
         return randint(1, self.ilosc_scian)
 

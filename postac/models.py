@@ -28,6 +28,9 @@ class ZestawCechPostaci(models.Model):
     wytrzymalosc = models.PositiveSmallIntegerField(validators=[MaxValueValidator(18)])
     ruch = models.PositiveSmallIntegerField(validators=[MinValueValidator(2), MaxValueValidator(9)])
 
+    class Meta:
+        verbose_name_plural = 'Zestaw cech postaci'
+
 
 class Umiejetnosc(models.Model):
     aktorstwo = models.PositiveSmallIntegerField(default=5, validators=[MinValueValidator(5), MaxValueValidator(99)])
@@ -150,6 +153,9 @@ class Umiejetnosc(models.Model):
     zreczne_palce = models.PositiveSmallIntegerField(default=10,
                                                      validators=[MinValueValidator(10), MaxValueValidator(99)])
 
+    class Meta:
+        verbose_name_plural = 'Umiejetnosci'
+
 
 class Profesja(models.Model):
     nazwa = models.CharField(max_length=50, primary_key=True)
@@ -161,6 +167,10 @@ class Profesja(models.Model):
     wybor2 = models.CharField(max_length=200, null=True)
     wybor3 = models.CharField(max_length=200, null=True)
     wybor4 = models.CharField(max_length=200, null=True)
+
+
+    class Meta:
+        verbose_name_plural = 'Profesje'
 
 
 class Postac(models.Model):
@@ -181,3 +191,7 @@ class Postac(models.Model):
     ekwipunek = models.CharField(max_length=1024, blank=True, null=True)
     historia = models.CharField(max_length=1024, blank=True, null=True)
     uzbrojenie = models.CharField(max_length=1024, blank=True, null=True)
+
+
+    class Meta:
+        verbose_name_plural = "Postacie"
