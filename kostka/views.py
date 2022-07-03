@@ -18,11 +18,6 @@ class WidokKostka(generic.View):
         )
 
 
-class WidokKostkaLista(generic.ListView):
-    template_name = 'kostka/list_view.html'
-    model = Kostka
-
-
 class WidokKostkaTworzenie(generic.CreateView):
     model = Kostka
     fields = '__all__'

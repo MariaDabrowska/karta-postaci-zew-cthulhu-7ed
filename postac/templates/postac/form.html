@@ -5,10 +5,12 @@
         {% csrf_token %}
         {{ form.as_p }}
         <p>
-            <input type="button" value="Generuj Cechy">
-        </p>
+            <button type="submit" name="generuj_cechy">Generuj Cechy</button>
+
         <p>
             <input type="submit" value="Submit">
         </p>
+
+        <a href="{% url 'postac:index' %}">Powrót</a>
     </form>
 {% endblock %}

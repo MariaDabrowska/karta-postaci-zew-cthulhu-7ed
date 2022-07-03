@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from postac.forms import FormPostac
-from postac.models import ZestawCechPostaci, Postac
+from postac.models import ZestawCechPostaci, Postac, Profesja
 from kostka.models import Kostka
 
 
@@ -13,58 +13,19 @@ class WidokIndex(generic.TemplateView):
     template_name = 'postac/index.html'
 
 
-class WidokPostac(generic.View):
+class WidokCecha(generic.View):
     def get(self, request):
         return render(
             request,
-            template_name='postac/postacie.html',
-            context={'postacie': Postac.objects.all()}
+            template_name='postac/zestawy_cech.html',
+            context={'zestawy_cech': ZestawCechPostaci.objects.all()}
         )
-
-
-class WidokPostacLista(generic.ListView):
-    template_name = 'postac/list_view_postacie.html'
-    model = Postac
-
-
-class WidokStworzPostac(generic.FormView, LoginRequiredMixin):
-    form_class = FormPostac
-    # template_name = 'postac/create.html'
-    template_name = 'postac/form.html'
-    success_url = reverse_lazy('postac:postac-widok')
-    extra_context = {
-
-    }
-
-    def form_valid(self, form):
-        obj = form.save(commit=False)
-        obj.uzytkownik = self.request.user
-        obj.save()
-        return HttpResponseRedirect(self.get_success_url())
-
-
-class WidokPostacSzczegoly(generic.DetailView):
-    model = Postac
-    template_name = 'postac/postac.html'
-
-
-class WidokPostacUaktualnij(generic.UpdateView):
-    model = Postac
-    fields = '__all__'
-    template_name = 'form.html'
-    success_url = reverse_lazy('postac:postac-widok')
-
-
-class WidokPostacUsun(generic.DeleteView):
-    model = Postac
-    template_name = 'postac/delete-postac.html'
-    success_url = reverse_lazy('postac:postac-widok')
 
 
 class WidokStworzCechy(generic.CreateView):
     model = ZestawCechPostaci
     fields = '__all__'
-    template_name = 'postac/list_view.html'
+    template_name = 'postac/list_view_profesje.html'
 
     def post(self, request, args, **kwargs):
         k6 = Kostka.objects.get(6)
@@ -116,7 +77,72 @@ class WidokStworzCechy(generic.CreateView):
         return 8
 
 
-class ZastosujWiek(generic.FormView):  #na tę chwilę to schemat, żeby mieć zapisane zależności
+class WidokCechaSzczegoly(generic.DetailView):
+    model = ZestawCechPostaci
+    template_name = 'postac/zestaw_cech.html'
+
+
+class WidokCechaUaktualnij(generic.UpdateView):
+    model = ZestawCechPostaci
+    fields = '__all__'
+    template_name = 'form.html'
+    success_url = reverse_lazy('postac:zestaw-cech-widok')
+
+
+class WidokCechaUsun(generic.DeleteView):
+    model = ZestawCechPostaci
+    template_name = 'delete.html'
+    success_url = reverse_lazy('postac:zestaw-cech-widok')
+
+
+class WidokPostac(generic.View):
+    def get(self, request):
+        return render(
+            request,
+            template_name='postac/postacie.html',
+            context={'postacie': Postac.objects.all()}
+        )
+
+
+class WidokStworzPostac(generic.FormView, LoginRequiredMixin):
+    form_class = FormPostac
+    # template_name = 'postac/create.html'
+    template_name = 'postac/form.html'
+    success_url = reverse_lazy('postac:postac-widok')
+    extra_context = {
+    }
+
+    def form_valid(self, form):
+        obj = form.save(commit=False)
+        obj.uzytkownik = self.request.user
+        obj.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+    # def generuj_cechy(self):
+    #     if self.request.GET.get('generuj_cechy'):
+    #         WidokStworzCechy()
+    #     return render(self.request, 'postac/postac.html')
+
+
+class WidokPostacSzczegoly(generic.DetailView):
+    model = Postac
+    template_name = 'postac/postac.html'
+
+
+class WidokPostacUaktualnij(generic.UpdateView):
+    model = Postac
+    fields = '__all__'
+    template_name = 'form.html'
+    success_url = reverse_lazy('postac:postac-widok')
+
+
+class WidokPostacUsun(generic.DeleteView):
+    model = Postac
+    template_name = 'postac/delete-postac.html'
+    success_url = reverse_lazy('postac:postac-widok')
+
+
+class ZastosujWiek(generic.FormView):  # na tę chwilę to schemat, żeby mieć zapisane zależności
     template_name = "form.html"
     form_class = ...
     success_url = ...  # wybierz profesję
@@ -186,9 +212,39 @@ class ZastosujWiek(generic.FormView):  #na tę chwilę to schemat, żeby mieć z
             for _ in range(4):
                 wyksztalcenie += self.test_rozwoju(wyksztalcenie)
 
-
-
         form.save()
         return result
 
 
+class WidokProfesja(generic.View):
+    def get(self, request):
+        return render(
+            request,
+            template_name='postac/profesje.html',
+            context={'profesje': Profesja.objects.all()}
+        )
+
+
+class WidokStworzProfesja(generic.CreateView):
+    model = Profesja
+    fields = '__all__'
+    template_name = 'postac/list_view_profesje.html'
+    success_url = reverse_lazy('postac:profesja-widok')
+
+
+class WidokProfesjaSzczegoly(generic.DetailView):
+    model = Profesja
+    template_name = 'postac/profesja.html'
+
+
+class WidokProfesjaUaktualnij(generic.UpdateView):
+    model = Profesja
+    fields = '__all__'
+    template_name = 'form.html'
+    success_url = reverse_lazy('postac:profesja-widok')
+
+
+class WidokProfesjaUsun(generic.UpdateView):
+    model = Profesja
+    template_name = 'form.html'
+    success_url = reverse_lazy('postac:profesja-widok')
