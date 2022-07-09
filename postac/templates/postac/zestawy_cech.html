@@ -4,6 +4,13 @@
         <p>
             <a href="{% url 'postac:zestaw-cech-szczegoly' pk=zc.pk %}">{{ zc }}</a>
         </p>
+        <form method="post">
+        {% csrf_token %}
+        Wygeneruj cechy
+        <p>
+            <input type="submit" name="cechy" value="GENERUJ CECHY">
+        </p>
+        </form>
     {% endfor %}
     <a href="{% url 'postac:index' %}">Powrót</a>
 {% endblock %}

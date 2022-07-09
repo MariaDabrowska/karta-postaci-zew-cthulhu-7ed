@@ -13,7 +13,7 @@ urlpatterns = [
     path('postac-usun/<pk>', views.WidokPostacUsun.as_view(), name='postac-usun'),
 
     path('zestaw-cech-widok/', views.WidokCecha.as_view(), name='zestaw-cech-widok'),
-    path('zestaw-cech-stworz/', views.WidokStworzCechy.as_view(), name='zestaw-cech-stworz'),
+    # path('zestaw-cech-stworz/', views.WidokStworzCechy.as_view(), name='zestaw-cech-stworz'),
     path('zestaw-cech-szczegoly/<pk>', views.WidokCechaSzczegoly.as_view(), name='zestaw-cech-szczegoly'),
     path('zestaw-cech-uaktualnij/<pk>', views.WidokCechaUaktualnij.as_view(), name='zestaw-cech-uaktualnij'),
     path('zestaw-cech-usun/<pk>', views.WidokCechaUsun.as_view(), name='zestaw-cech-usun'),

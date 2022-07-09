@@ -9,6 +9,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 #     @abstractmethod
 #     def pokaz_wartosci(self, value):
 #         return value, value // 2, value // 5
+from postac.iter import IteratorCech
 
 
 class ZestawCechPostaci(models.Model):
@@ -27,6 +28,12 @@ class ZestawCechPostaci(models.Model):
     krzepa = models.SmallIntegerField(validators=[MinValueValidator(-2), MaxValueValidator(2)])
     wytrzymalosc = models.PositiveSmallIntegerField(validators=[MaxValueValidator(18)])
     ruch = models.PositiveSmallIntegerField(validators=[MinValueValidator(2), MaxValueValidator(9)])
+
+    def __str__(self):
+        return f'Zestaw cech {self.id}'
+
+    def __iter__(self):
+        return IteratorCech(self)
 
     class Meta:
         verbose_name_plural = 'Zestaw cech postaci'
@@ -167,6 +174,9 @@ class Profesja(models.Model):
     wybor2 = models.CharField(max_length=200, null=True)
     wybor3 = models.CharField(max_length=200, null=True)
     wybor4 = models.CharField(max_length=200, null=True)
+
+    def __str__(self):
+        return f'{self.nazwa}'
 
 
     class Meta:

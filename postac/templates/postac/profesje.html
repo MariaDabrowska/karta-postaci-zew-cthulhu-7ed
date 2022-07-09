@@ -2,7 +2,7 @@
 {% block content %}
     {% for p in profesje %}
         <p>
-            <a href="{% url 'postac:zestaw-cech-szczegoly' pk=p.pk %}">{{ p.nazwa }}</a>
+            <a href="{% url 'postac:profesja-szczegoly' pk=p.pk %}">{{ p.nazwa }}</a>
         </p>
     {% endfor %}
     <a href="{% url 'postac:index' %}">Powrót</a>

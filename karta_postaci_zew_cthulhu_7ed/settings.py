@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'kostka',
     'postac',
     'uzytkownik',
-    'counter_widgets',
 ]
 
 MIDDLEWARE = [

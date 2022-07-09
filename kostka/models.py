@@ -19,6 +19,7 @@ class Kostka(models.Model):
 
 
 if __name__ == '__main__':
+
     k6 = Kostka(6)
     print(k6.rzuty_modyfikowane1)
     print(k6.rzuty_modyfikowane1)

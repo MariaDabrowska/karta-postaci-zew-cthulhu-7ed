@@ -6,6 +6,11 @@
     <p>Ekwipunek: {{ postac.ekwipunek }}</p>
     <p>Historia: {{ postac.historia }}</p>
     <p>Uzbrojenie: {{ postac.uzbrojenie }}</p>
+{#    <p>Cechy:#}
+{#        {% for cecha in postac.cechy %}#}
+{#            {{ cecha }}#}
+{#        {% endfor %}#}
+    </p>
     <p>
     <a href="{% url 'postac:postac-uaktualnij' pk=postac.pk %}"><input type="submit" value="UAKTUALNIJ"></a>
     <a href="{% url 'postac:postac-usun' pk=postac.pk %}"><input type="submit" value="USUŃ"></a>

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    {{ form.media }}
+        {% csrf_token %}
+        Wygeneruj cechy
+        <p>
+            <input type="submit" name="cechy" value="GENERUJ CECHY">
+        </p>
+    <p><a href="{% url 'postac:index' %}">Powrót</a></p>
+{% endblock %}
