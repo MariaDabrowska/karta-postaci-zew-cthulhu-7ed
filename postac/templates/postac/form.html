@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+    {{ form.media }}
+    <form method="post" class="tworzenie_postaci">
+        {#        <p>#}
+        {#            <label class="label" for="id_nazwa">Imię Badacza:</label>#}
+        {#            <input type="text" name="nazwa" placeholder="Jak Cię zwą?" required id="id_nazwa">#}
+        {#        </p>#}
+        {#        <p>#}
+        {#            <label class="label" for="id_wiek">Wiek:</label>#}
+        {#            <button type="button" class="decrement" onclick="_addDelta('id_wiek', -1)">-</button>#}
+        {#            <input name="wiek" required id="id_wiek">#}
+        {#            <button type="button" class="increment" onclick="_addDelta('id_wiek', +1)">+</button>#}
+        {#        <p>#}
+        {#        <p>#}
+        {#            <label class="label" for="id_cechy">Zestaw cech:</label>#}
+        {#            <button type="button">GENERUJ</button>#}
+        {#        </p>#}
+        {{ form.as_p }}
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+
+        <a href="{% url 'postac:index' %}">Powrót</a>
+    </form>
+{% endblock %}

@@ -2,14 +2,17 @@
 
 <html {% if LANGUAGE_CODE %}lang="{{ LANGUAGE_CODE }}"{% endif %}>
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Generator Karty Postaci Zew Cthulhu 7ed</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"
     >
+
     <script
             src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -22,41 +25,55 @@
             src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
             integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
             crossorigin="anonymous"></script>
-  </head>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container fixed">
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container fixed">
         <a class="navbar-brand">Generator Karty Postaci Zew Cthulhu 7ed</a>
         <button
-          class="navbar-toggler" type="button"
-          data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                class="navbar-toggler" type="button"
+                data-toggle="collapse" data-target="#navbarNavAltMarkup"
         >
-          <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="{% url 'homepage' %}">
-              Strona Główna
-            </a>
-          </div>
-          <div class="navbar-nav">
-              {% if user.is_authenticated %}
-              <a class="nav-item nav-link" href="{% url 'logout' %}">Wyloguj</a>
-              <a class="nav-item nav-link" href="{% url 'password_change' %}">Zmiana hasła</a>
-              {% else %}
-              <a class="nav-item nav-link" href="{% url 'login' %}">Zaloguj</a>
-              <a class="nav-item nav-link" href="{% url 'uzytkownik:rejestracja' %}">Zarejestruj</a>
-              {% endif %}
-          </div>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="{% url 'homepage' %}">
+                    Strona Główna
+                </a>
+            </div>
+            <div class="navbar-nav">
+                {% if user.is_authenticated %}
+                    <a class="nav-item nav-link" href="{% url 'logout' %}">Wyloguj</a>
+                    <a class="nav-item nav-link" href="{% url 'password_change' %}">Zmiana hasła</a>
+                {% else %}
+                    <a class="nav-item nav-link" href="{% url 'login' %}">Zaloguj</a>
+                    <a class="nav-item nav-link" href="{% url 'uzytkownik:rejestracja' %}">Zarejestruj</a>
+                {% endif %}
+            </div>
         </div>
-      </div>
-    </nav>
-    <div class="container">
-      <div class="jumbotron">
-        {% block content %}{% endblock %}
-      </div>
     </div>
-  </body>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        {% block content %}{% endblock %}
+    </div>
+</div>
+</body>
 
 </html>

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for p in profesje %}
+        <p>
+            <a href="{% url 'postac:zestaw-cech-szczegoly' pk=p.pk %}">{{ p.nazwa }}</a>
+        </p>
+    {% endfor %}
+    <a href="{% url 'postac:index' %}">Powrót</a>
+{% endblock %}
