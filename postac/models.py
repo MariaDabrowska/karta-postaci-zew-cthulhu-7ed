@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-from postac.iter import IteratorCech
 
 
 # class Przelicznik(models.Model, ABC):

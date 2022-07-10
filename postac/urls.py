@@ -13,7 +13,6 @@ urlpatterns = [
     path('postac-usun/<pk>', views.WidokPostacUsun.as_view(), name='postac-usun'),
 
     path('zestaw-cech-widok/', views.WidokCecha.as_view(), name='zestaw-cech-widok'),
-    # path('zestaw-cech-stworz/', views.WidokStworzCechy.as_view(), name='zestaw-cech-stworz'),
     path('zestaw-cech-szczegoly/<pk>', views.WidokCechaSzczegoly.as_view(), name='zestaw-cech-szczegoly'),
     path('zestaw-cech-uaktualnij/<pk>', views.WidokCechaUaktualnij.as_view(), name='zestaw-cech-uaktualnij'),
     path('zestaw-cech-usun/<pk>', views.WidokCechaUsun.as_view(), name='zestaw-cech-usun'),
@@ -23,6 +22,4 @@ urlpatterns = [
     path('profesja-szczegoly/<pk>', views.WidokProfesjaSzczegoly.as_view(), name='profesja-szczegoly'),
     path('profesja-uaktualnij/<pk>', views.WidokProfesjaUaktualnij.as_view(), name='profesja-uaktualnij'),
     path('profesja-usun/<pk>', views.WidokProfesjaUsun.as_view(), name='profesja-usun'),
-
-    path('zastosuj-wiek/', views.ZastosujWiek.as_view(), name='zastosuj_wiek'),
 ]

@@ -13,8 +13,7 @@ class FormPostac(forms.ModelForm):
 
     class Meta:
         model = Postac
-        # exclude = ['nazwa', 'uzytkownik', 'wiek', 'cechy']
-        exclude = ['uzytkownik',]
+        exclude = ['uzytkownik', ]
         help_texts = {
             'wiek': 'Kliknij w pole i użyj scrolla by wybrać wiek'
         }
@@ -24,7 +23,7 @@ class FormPostac(forms.ModelForm):
         self.fields['nazwa'].label = 'Imię Badacza'
         self.fields['nazwa'].widget.attrs.update({'placeholder': 'Jak Cię zwą?'})
         self.fields['um'].label = 'Lista umiejętności'
-        self.fields['cechy'].widget.attrs['disabled'] = True
+        # self.fields['cechy'].widget.attrs = forms.HiddenInput()
 
 
 class FormZestawCech(forms.ModelForm):
