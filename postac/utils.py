@@ -18,6 +18,7 @@ class GeneratorCech:
         szczescie = k6.rzuty_modyfikowane1()
         poczytalnosc = moc
         krzepa = cls._generuj_krzepa(sila=sila, budowa_ciala=budowa_ciala)
+        punkty_magii = moc // 5
         mod_obr = cls._generuj_mod_ob(krzepa=krzepa)
         wytrzymalosc = cls._generuj_wytrzymalosc(kondycja=kondycja, budowa_ciala=budowa_ciala)
         ruch = cls._generuj_ruch(sila=sila, budowa_ciala=budowa_ciala, zrecznosc=zrecznosc)
@@ -34,7 +35,7 @@ class GeneratorCech:
             szczescie=szczescie,
             poczytalnosc=poczytalnosc,
             krzepa=krzepa,
-            punkty_magii=0,
+            punkty_magii=punkty_magii,
             mod_obr=mod_obr,
             wytrzymalosc=wytrzymalosc,
             ruch=ruch

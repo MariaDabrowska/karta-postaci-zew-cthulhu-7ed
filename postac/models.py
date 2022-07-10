@@ -3,13 +3,13 @@ from abc import ABC, abstractmethod
 from django.contrib.auth.models import User
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from postac.iter import IteratorCech
 
 
 # class Przelicznik(models.Model, ABC):
 #     @abstractmethod
 #     def pokaz_wartosci(self, value):
 #         return value, value // 2, value // 5
-from postac.iter import IteratorCech
 
 
 class ZestawCechPostaci(models.Model):
@@ -32,8 +32,11 @@ class ZestawCechPostaci(models.Model):
     def __str__(self):
         return f'Zestaw cech {self.id}'
 
-    def __iter__(self):
-        return IteratorCech(self)
+    # def __iter__(self):
+    #     return IteratorCech(self)
+    #
+    # def __len__(self):
+    #     return len(self)
 
     class Meta:
         verbose_name_plural = 'Zestaw cech postaci'

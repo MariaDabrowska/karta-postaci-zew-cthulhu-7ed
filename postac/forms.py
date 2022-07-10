@@ -24,6 +24,7 @@ class FormPostac(forms.ModelForm):
         self.fields['nazwa'].label = 'Imię Badacza'
         self.fields['nazwa'].widget.attrs.update({'placeholder': 'Jak Cię zwą?'})
         self.fields['um'].label = 'Lista umiejętności'
+        self.fields['cechy'].widget.attrs['disabled'] = True
 
 
 class FormZestawCech(forms.ModelForm):

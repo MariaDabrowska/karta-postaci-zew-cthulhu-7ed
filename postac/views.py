@@ -10,11 +10,11 @@ from kostka.models import Kostka
 from postac.utils import GeneratorCech
 
 
-class WidokIndex(generic.TemplateView):
+class WidokIndex(LoginRequiredMixin, generic.TemplateView):
     template_name = 'postac/index.html'
 
 
-class WidokCecha(generic.View):
+class WidokCecha(LoginRequiredMixin, generic.View):
     def get(self, request):
         return render(
             request,
@@ -23,25 +23,25 @@ class WidokCecha(generic.View):
         )
 
 
-class WidokCechaSzczegoly(generic.DetailView):
+class WidokCechaSzczegoly(LoginRequiredMixin, generic.DetailView):
     model = ZestawCechPostaci
     template_name = 'postac/zestaw_cech.html'
 
 
-class WidokCechaUaktualnij(generic.UpdateView):
+class WidokCechaUaktualnij(LoginRequiredMixin, generic.UpdateView):
     model = ZestawCechPostaci
     fields = '__all__'
     template_name = 'form.html'
     success_url = reverse_lazy('postac:zestaw-cech-widok')
 
 
-class WidokCechaUsun(generic.DeleteView):
+class WidokCechaUsun(LoginRequiredMixin, generic.DeleteView):
     model = ZestawCechPostaci
     template_name = 'delete.html'
     success_url = reverse_lazy('postac:zestaw-cech-widok')
 
 
-class WidokPostac(generic.View):
+class WidokPostac(LoginRequiredMixin, generic.View):
     def get(self, request):
         return render(
             request,
@@ -50,7 +50,7 @@ class WidokPostac(generic.View):
         )
 
 
-class WidokStworzPostac(generic.FormView, LoginRequiredMixin):
+class WidokStworzPostac(LoginRequiredMixin, generic.FormView):
     form_class = FormPostac
     template_name = 'postac/form.html'
     success_url = reverse_lazy('postac:postac-widok')
@@ -70,25 +70,25 @@ class WidokStworzPostac(generic.FormView, LoginRequiredMixin):
         return self.render_to_response(self.get_context_data(form=form))
 
 
-class WidokPostacSzczegoly(generic.DetailView):
+class WidokPostacSzczegoly(LoginRequiredMixin, generic.DetailView):
     model = Postac
     template_name = 'postac/postac.html'
 
 
-class WidokPostacUaktualnij(generic.UpdateView):
+class WidokPostacUaktualnij(LoginRequiredMixin, generic.UpdateView):
     model = Postac
     fields = '__all__'
     template_name = 'form.html'
     success_url = reverse_lazy('postac:postac-widok')
 
 
-class WidokPostacUsun(generic.DeleteView):
+class WidokPostacUsun(LoginRequiredMixin, generic.DeleteView):
     model = Postac
     template_name = 'postac/delete-postac.html'
     success_url = reverse_lazy('postac:postac-widok')
 
 
-class ZastosujWiek(generic.FormView):  # na tę chwilę to schemat, żeby mieć zapisane zależności
+class ZastosujWiek(LoginRequiredMixin, generic.FormView):  # na tę chwilę to schemat, żeby mieć zapisane zależności
     template_name = "form.html"
     form_class = ...
     success_url = ...  # wybierz profesję
@@ -162,7 +162,7 @@ class ZastosujWiek(generic.FormView):  # na tę chwilę to schemat, żeby mieć 
         return result
 
 
-class WidokProfesja(generic.View):
+class WidokProfesja(LoginRequiredMixin, generic.View):
     def get(self, request):
         return render(
             request,
@@ -171,26 +171,26 @@ class WidokProfesja(generic.View):
         )
 
 
-class WidokStworzProfesja(generic.CreateView):
+class WidokStworzProfesja(LoginRequiredMixin, generic.CreateView):
     model = Profesja
     fields = '__all__'
     template_name = 'postac/list_view_profesje.html'
     success_url = reverse_lazy('postac:profesja-widok')
 
 
-class WidokProfesjaSzczegoly(generic.DetailView):
+class WidokProfesjaSzczegoly(LoginRequiredMixin, generic.DetailView):
     model = Profesja
     template_name = 'postac/profesja.html'
 
 
-class WidokProfesjaUaktualnij(generic.UpdateView):
+class WidokProfesjaUaktualnij(LoginRequiredMixin, generic.UpdateView):
     model = Profesja
     fields = '__all__'
     template_name = 'form.html'
     success_url = reverse_lazy('postac:profesja-widok')
 
 
-class WidokProfesjaUsun(generic.UpdateView):
+class WidokProfesjaUsun(LoginRequiredMixin, generic.UpdateView):
     model = Profesja
     template_name = 'form.html'
     success_url = reverse_lazy('postac:profesja-widok')

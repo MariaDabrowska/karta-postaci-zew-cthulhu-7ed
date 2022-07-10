@@ -6,14 +6,60 @@
     <p>Ekwipunek: {{ postac.ekwipunek }}</p>
     <p>Historia: {{ postac.historia }}</p>
     <p>Uzbrojenie: {{ postac.uzbrojenie }}</p>
-{#    <p>Cechy:#}
-{#        {% for cecha in postac.cechy %}#}
-{#            {{ cecha }}#}
-{#        {% endfor %}#}
-    </p>
     <p>
-    <a href="{% url 'postac:postac-uaktualnij' pk=postac.pk %}"><input type="submit" value="UAKTUALNIJ"></a>
-    <a href="{% url 'postac:postac-usun' pk=postac.pk %}"><input type="submit" value="USUŃ"></a>
+    <table>
+        <tr>
+            <th>Cecha</th>
+            <th>Wartość</th>
+            <th>Cecha</th>
+            <th>Wartość</th>
+            <th>Cecha</th>
+            <th>Wartość</th>
+        </tr>
+        <tr>
+            <td>Sila</td>
+            <td>{{ postac.cechy.sila }}</td>
+            <td>Inteligencja</td>
+            <td>{{ postac.cechy.integligencja }}</td>
+            <td>Krzepa</td>
+            <td>{{ postac.cechy.krzepa }}</td>
+        </tr>
+        <tr>
+            <td>Kondycja</td>
+            <td>{{ postac.cechy.kondycja }}</td>
+            <td>Moc</td>
+            <td>{{ postac.cechy.moc }}</td>
+            <td>Punkty magii</td>
+            <td>{{ postac.cechy.punkty_magii }}</td>
+        </tr>
+        <tr>
+            <td>Budowa ciala</td>
+            <td>{{ postac.cechy.budowa_ciala }}</td>
+            <td>Wyksztalcenie</td>
+            <td>{{ postac.cechy.wyksztalcenie }}</td>
+            <td>Mod_obr</td>
+            <td>{{ postac.cechy.mod_obr }}</td>
+        </tr>
+        <tr>
+            <td>Zrecznosc</td>
+            <td>{{ postac.cechy.zrecznosc }}</td>
+            <td>Szczescie</td>
+            <td>{{ postac.cechy.szczescie }}</td>
+            <td>Wytrzymalosc</td>
+            <td>{{ postac.cechy.wytrzymalosc }}</td>
+        </tr>
+        <tr>
+            <td>Wyglad</td>
+            <td>{{ postac.cechy.wyglad }}</td>
+            <td>Poczytalnosc</td>
+            <td>{{ postac.cechy.poczytalnosc }}</td>
+            <td>Ruch</td>
+            <td>{{ postac.cechy.ruch }}</td>
+        </tr>
+    </table>
+    <p>
+        <a href="{% url 'postac:postac-uaktualnij' pk=postac.pk %}"><input type="submit" value="UAKTUALNIJ"></a>
+        <a href="{% url 'postac:postac-usun' pk=postac.pk %}"><input type="submit" value="USUŃ"></a>
     </p>
     <a href="{% url 'postac:postac-widok' %}">Powrót</a>
 {% endblock %}

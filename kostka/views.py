@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
@@ -5,11 +6,11 @@ from django.views import generic
 from kostka.models import Kostka
 
 
-class WidokIndex(generic.TemplateView):
+class WidokIndex(LoginRequiredMixin, generic.TemplateView):
     template_name = 'kostka/index.html'
 
 
-class WidokKostka(generic.View):
+class WidokKostka(LoginRequiredMixin, generic.View):
     def get(self, request):
         return render(
             request,
@@ -18,26 +19,26 @@ class WidokKostka(generic.View):
         )
 
 
-class WidokKostkaTworzenie(generic.CreateView):
+class WidokKostkaTworzenie(LoginRequiredMixin, generic.CreateView):
     model = Kostka
     fields = '__all__'
     template_name = 'form.html'
     success_url = reverse_lazy('kostka:kostka-widok')
 
 
-class WidokKostkaSzczegoly(generic.DetailView):
+class WidokKostkaSzczegoly(LoginRequiredMixin, generic.DetailView):
     model = Kostka
     template_name = 'kostka/moja_kostka.html'
 
 
-class WidokKostkaUaktualnij(generic.UpdateView):
+class WidokKostkaUaktualnij(LoginRequiredMixin, generic.UpdateView):
     model = Kostka
     fields = '__all__'
     template_name = 'form.html'
     success_url = reverse_lazy('kostka:kostka-widok')
 
 
-class WidokKostkaUsun(generic.DeleteView):
+class WidokKostkaUsun(LoginRequiredMixin, generic.DeleteView):
     model = Kostka
     template_name = 'delete.html'
     success_url = reverse_lazy('kostka:kostka-widok')
